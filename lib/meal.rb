@@ -1,6 +1,17 @@
 class Meal
-  def initialize
-    puts "the file path worked."
-  end
-  
+ attr_accesor :title, :recipe, :id
+
+ @@all = []
+ 
+ def save
+  self.class.all << self
+ end
+
+ def initialize
+  save
+ end
+
+ def self.all
+  @@all
+ end 
 end
