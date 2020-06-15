@@ -1,7 +1,7 @@
 require 'bundler'
 Bundler.require
 
-require_relative "../lib/meal_planner/version"
+require_relative "../lib/meal_planner/version.rb"
 require_relative "../lib/api.rb"
 require_relative "../lib/CLI.rb"
 require_relative "../lib/meal.rb"
