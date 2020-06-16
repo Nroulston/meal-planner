@@ -31,16 +31,21 @@ MENU
     when 2
       allergy_menu
     when 3
-      calorie_menu
+      puts " "
+      puts "Coming soon"
+      sleep(1)
+      puts "Going back to the main menu"
+      sleep(1)
+      main_menu
     when 4
-      creat_meal_plan_menu
+      create_meal_plan_menu
     end
   end
 
   def diet_plan_menu
     puts "choose from the list of popular diets"
     User.diet_plans.each_with_index do |meal, index|
-    puts "#{index + 1}: #{meal}"
+    puts "      #{index + 1}: #{meal}"
     end
 
     puts "#{(User.diet_plans.length) +1 }: main menu"
@@ -68,10 +73,10 @@ MENU
     meal_plan_menu
   end
   def meal_plan_menu
-    puts "3 custom meals created just for you"
-    puts "1: Breakfast is #{Meal.all[0].title}"
-    puts "2: Lunch is #{Meal.all[1].title}"
-    puts "3: Dinner is #{Meal.all[2].title}"
+    puts "      3 custom meals created just for you"
+    puts "      1: Breakfast is #{Meal.all[0].title}"
+    puts "      2: Lunch is #{Meal.all[1].title}"
+    puts "      3: Dinner is #{Meal.all[2].title}"
     puts "Enter number 1-3 if you want the recipe"
     puts "Put 4 if you want to know daily macros and calories"
     puts "enter the word 'menu' exactly to go and make a new meal plan"
@@ -92,13 +97,14 @@ MENU
       meal_plan_menu
     when 4
       puts "You can find the recipe here"
-      puts "Calories: #{Meal.calories}"
-      puts "Protein: #{Meal.protein}"
-      puts "Carbohydrates: #{Meal.carbohydrates}"
-      puts "Fat: #{Meal.fat}"
+      puts "      Calories: #{Meal.calories}"
+      puts "      Protein: #{Meal.protein}"
+      puts "      Carbohydrates: #{Meal.carbohydrates}"
+      puts "      Fat: #{Meal.fat}"
       meal_plan_menu
     end
   end
+
   def valid?(input, collection = nil)
     if (0..(collection.length + 1)).include?(input) 
     else 
@@ -122,7 +128,7 @@ MENU
   def allergy_menu
     puts "Add your allergies below."
     User.allergies.each_with_index do |meal, index|
-      puts "#{index + 1}: #{meal}"
+      puts "      #{index + 1}: #{meal}"
     end
     puts "#{(User.allergies.length) +1 }: main menu"
     input = get_input

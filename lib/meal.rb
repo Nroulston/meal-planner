@@ -35,20 +35,20 @@ class Meal
   @@all
  end 
 
- def self.create_meal_plan(meals_received_json)
-  @@all = []
-   meals_received_json.each do |key, value|
-    if (key == 'meals')
-      value.each do |meal_item|
-        meal = Meal.new
-        meal.title = meal_item["title"]
-        meal.recipe = meal_item["sourceUrl"]
-        meal.id = meal_item["id"]
+  def self.create_meal_plan(meals_received_json)
+    @@all = []
+    meals_received_json.each do |key, value|
+      if (key == 'meals')
+        value.each do |meal_item|
+          meal = Meal.new
+          meal.title = meal_item["title"]
+          meal.recipe = meal_item["sourceUrl"]
+          meal.id = meal_item["id"]
+        end
+      end
+      if (key == "nutrients")
+        @@calories, @@protein, @@fat, @@carbohydrates = value.values   
       end
     end
-    if (key == "nutrients")
-      @@calories, @@protein, @@fat, @@carbohydrates = value.values   
-    end
   end
-
 end
