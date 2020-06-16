@@ -1,7 +1,7 @@
 class User
   attr_accessor :diet_plan, :calorie_goal
   attr_reader :allergies
-  @@allergies = ['Milk', 'Fish and Shellfish', 'Nuts', 'Soybeans', 'Wheat', 'Eggs']
+  @@allergies = ['Milk', 'Fish,Shellfish', 'Nuts', 'Soybeans', 'Wheat', 'Eggs']
   @@diet_plans = ['Gluten Free', 'Ketogenic', 'Vegetarian', 'Lacto-Vegetarian', 'Ovo-Vegetarian', 'Vegan', 'Pescetarian', 'Paleo', 'Primal', 'Whole30']
   @@all = []
  
@@ -11,6 +11,7 @@ class User
 
  def initialize
   @allergies = []
+  @diet_plan = ""
   save
  end
 
@@ -20,6 +21,10 @@ class User
 
  def allergies=(allergy)
   @allergies << allergy
+ end
+
+ def diet_plan=(diet)
+  @diet_plan << diet
  end
 
  def self.allergies
