@@ -13,12 +13,12 @@ class Cli
   def main_menu
     @menu_options = [1,2,3,4]
     menu = <<-MENU
-Please choose an option below using the numbers as a guide
-1. Are you following any popular diet plans?
-2. Do you have any allergies?
-3. Do you have a daily calorie goal?
-4. Generate a meal plan
-5. Exit
+    Please choose an option below using the numbers as a guide
+    1. Are you following any popular diet plans?
+    2. Do you have any allergies?
+    3. Do you have a daily calorie goal?
+    4. Generate a meal plan
+    5. Exit
 MENU
 
   puts "#{menu}"
@@ -78,8 +78,8 @@ MENU
     puts "      2: Lunch is #{Meal.all[1].title}"
     puts "      3: Dinner is #{Meal.all[2].title}"
     puts "Enter number 1-3 if you want the recipe"
-    puts "Put 4 if you want to know daily macros and calories"
-    puts "enter the word 'menu' exactly to go and make a new meal plan"
+    puts "Enter 4 if you want to know daily macros and calories"
+    puts "Enter the word 'home' exactly to go and make a new meal plan"
     input = get_input
     valid?(input, Meal.all)
     case input
@@ -134,6 +134,7 @@ MENU
     input = get_input
     valid?(input, User.allergies)
     main_menu if input == (User.allergies.length) + 1
+    
     user_choice = User.allergies[input - 1]
     User.all[0].allergies = user_choice
     puts "Your allergie(s) - #{User.all[0].allergies}"

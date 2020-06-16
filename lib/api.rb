@@ -26,6 +26,7 @@ class Api
     else
       @url = @base_url << @diet_plan_url << @allergies_url
     end
+    binding.pry
   end
   def send_to_meal_creation(meals_sent_json)
     Meal.create_meal_plan(meals_sent_json)

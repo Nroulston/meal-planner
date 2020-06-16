@@ -20,7 +20,7 @@ class User
  end 
 
  def allergies=(allergy)
-  @allergies << allergy
+  @allergies << allergy unless @allergies.include?(allergy)
  end
 
  def diet_plan=(diet)

@@ -1,12 +1,12 @@
 # MealPlanner
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/meal_planner`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to an interactive meal planner. 
+Do you have allergies, follow a popular diet, and/or just don't have time to look up meals for the day?
+We have you covered. Get a custom daily meal plan generated with a few clicks of the keyboard.
 
 ## Installation
-
-Add this line to your application's Gemfile:
+Not a gem yet. So to run this progam you need ruby installed on your computer. Fork and clone it to your local environment.
+Run ./bin/run from your terminal when you are in the Meal_planner folder.
+<!-- Add this line to your application's Gemfile:
 
 ```ruby
 gem 'meal_planner'
@@ -18,11 +18,14 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install meal_planner
+    $ gem install meal_planner -->
 
 ## Usage
 
-TODO: Write usage instructions here
+Follow along with the prompts. 
+Enter in your custom needs.
+Generate your meal plan
+Snag the recipe and get to cooking!
 
 ## Development
 
@@ -32,7 +35,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/<github username>/meal_planner. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/<github username>/meal_planner/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/<github nroulston>/meal_planner. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/<github nroulston>/meal_planner/blob/master/CODE_OF_CONDUCT.md).
 
 
 ## License
