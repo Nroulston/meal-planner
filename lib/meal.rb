@@ -1,7 +1,8 @@
 class Meal
- attr_accessor :title, :recipe, :id
-
-
+  attr_accessor :title, :recipe, :id
+  
+  
+ @@all = []
  @@calories = ''
  @@protein = ''
  @@fat = ''
@@ -36,7 +37,7 @@ class Meal
  end 
 
   def self.create_meal_plan(meals_received_json)
-    @@all = []
+    self.all.clear
     meals_received_json.each do |key, value|
       if (key == 'meals')
         value.each do |meal_item|

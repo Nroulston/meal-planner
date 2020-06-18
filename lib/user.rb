@@ -24,7 +24,7 @@ class User
  end
 
  def diet_plan=(diet)
-  @diet_plan << diet
+  @diet_plan = diet
  end
 
  def self.allergies

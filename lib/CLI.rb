@@ -106,7 +106,7 @@ MENU
   end
 
   def valid?(input, collection = nil)
-    if (0..(collection.length + 1)).include?(input) 
+    if (1..(collection.length + 1)).include?(input) 
     else 
       puts "------Invalid input-----"
       puts "--------Try again-------"
