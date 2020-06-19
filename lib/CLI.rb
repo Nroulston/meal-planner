@@ -11,7 +11,7 @@ class Cli
   end
 
   def main_menu
-    @menu_options = [1,2,3,4]
+    @menu_options = [1,2,3,4] #seems like the wrong place to set an instance variable
     menu = <<-MENU
     Please choose an option below using the numbers as a guide
     1. Are you following any popular diet plans?
@@ -24,7 +24,7 @@ MENU
   puts "#{menu}"
   print "enter number:"
   input = gets.chomp.to_i
-  valid?(input, @menu_options)
+  validate_input(input, @menu_options)
     case input
     when 1
       diet_plan_menu
@@ -44,16 +44,16 @@ MENU
 
   def diet_plan_menu
     puts "choose from the list of popular diets"
-    User.diet_plans.each_with_index do |meal, index|
-    puts "      #{index + 1}: #{meal}"
+    User.diet_plans.each_with_index(1) do |meal, index|
+    puts "      #{index}: #{meal}"
     end
 
     puts "#{(User.diet_plans.length) +1 }: main menu"
     input = get_input
-    valid?(input, User.diet_plans)
+    validate_input(input, User.diet_plans)
     main_menu if input == (User.diet_plans.length) + 1
     user_choice = User.diet_plans[input - 1]
-    User.all[0].diet_plan = user_choice
+    User.all[0].diet_plan = user_choice #why are you slicing by 0? 
     puts "You chose - #{User.all[0].diet_plan}"
     puts 'Come back to change your diet plan'
     puts "---loading main menu___"
@@ -81,7 +81,7 @@ MENU
     puts "Enter 4 if you want to know daily macros and calories"
     puts "Enter the word 'home' exactly to go and make a new meal plan"
     input = get_input
-    valid?(input, Meal.all)
+    validate_input(input, Meal.all)
     case input
     when 1
       puts "You can find the recipe here"
@@ -105,23 +105,34 @@ MENU
     end
   end
 
-  def valid?(input, collection = nil)
-    if (1..(collection.length + 1)).include?(input) 
-    else 
-      puts "------Invalid input-----"
-      puts "--------Try again-------"
-      puts " "
-      sleep(0.5)
-      case collection
-      when User.diet_plans
-        diet_plan_menu
-      when User.allergies
-        allergy_menu
-      when @menu_options
-        main_menu
-      when Meal.all
-        created_meal_plan_menu
-      end
+  def valid?(input, collection) #i'm expecting a valid? method to return true/false because most methods in ruby that end with ? do that
+    (1..(collection.length + 1)).include?(input) 
+  end
+
+  def reprint_menu(collection)
+    case collection
+        when User.diet_plans
+          diet_plan_menu
+        when User.allergies
+          allergy_menu
+        when @menu_options
+          main_menu
+        when Meal.all
+          created_meal_plan_menu
+        end
+  end
+
+  def error_message
+    puts "------Invalid input-----"
+    puts "--------Try again-------"
+    puts " "
+    sleep(0.5)
+  end
+
+  def validate_input(input, collection)
+    while !valid?(input, collection)
+      error_message
+      reprint_menu(collection)
     end
   end
 
@@ -132,7 +143,7 @@ MENU
     end
     puts "#{(User.allergies.length) +1 }: main menu"
     input = get_input
-    valid?(input, User.allergies)
+    validate_input(input, User.allergies)
     main_menu if input == (User.allergies.length) + 1
     
     user_choice = User.allergies[input - 1]
